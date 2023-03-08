@@ -4,15 +4,15 @@ I want a working example of a medium-sized PowerShell script module,
 So that I can copy it, in whole or part, into new or existing projects and customized as needed.
 
 ## Acceptance Criteria
-* Uses standard script module folder structure
+* [x] Uses standard script module folder structure
   * Public dir for public functions, variables
   * Private dir for private functinos, variables
-  * Tests dir for Pester tests
-    * Tests for individual functions will be in same dir as function's PS1 file
-  * Do *NOT* create *.psd1 file, as that interferes with the method used to dot source
-* Implements Pester tests for individual functions
-* Implements Pester tests for all functions
-* Implements PSScriptAnalyzer via Pester test
+  * Tests dir for general Pester tests
+    * Tests for individual functions will be in same dir as function's .ps1 file
+* [x] Manifest script (.psm1) dot sources all .ps1 files and exports public functions
+* [ ] Implements Pester tests for individual functions
+* [ ] Implements Pester tests for all functions
+* [ ] Implements PSScriptAnalyzer via Pester test
 
 ## Getting Started
 ```powershell
