@@ -1,4 +1,4 @@
-﻿# PSScriptAnalyzer settings for this repo. 
+﻿# PSScriptAnalyzer settings for this repo.
 # Reference: https://github.com/PowerShell/PSScriptAnalyzer/blob/master/README.md#settings-support-in-scriptanalyzer
 @{
     Severity     = @('Information', 'Error', 'Warning')
@@ -15,8 +15,6 @@
         'PSAvoidUsingPositionalParameters', # PSGallery
         'PSAvoidUsingUserNameAndPasswordParams', # ScriptSecurity
         'PSAvoidUsingWMICmdlet', # PSGallery
-        # 'PSAvoidUsingWriteHost', # ScriptingStyle. No concerns using `Write-Host` because it is used as informational output in scripts and provides additional options, like color, that Write-Output and Write-Informational do not provide. 
-        # 'PSDSC*', # PSGallery. Do not expect desired state config scripts to be used. Specific rule names can be found with: `Get-ScriptAnalyzerRule | Where-Object { $_.RuleName -like "PSDSC*" }`
         'PSMissingModuleManifestField', # CmdletDesign, PSGallery
         'PSPlaceCloseBrace', # CodeFormatting
         'PSPlaceOpenBrace', # CodeFormatting
@@ -31,8 +29,13 @@
         'PSUseCorrectCasing', # CodeFormatting
         'PSUseDeclaredVarsMoreThanAssignments', # PSGallery
         'PSUsePSCredentialType', # PSGallery
-        # 'PSUseShouldProcessForStateChangingFunctions', # CmdletDesign, PSGallery # Rarely actually changing state of sensitive items, so not needed at this time.
         'PSUseSingularNouns' # CmdletDesign, PSGallery
+    )
+    ExcludeRules = @(
+        'PSAvoidTrailingWhitespace' # Part of BuiltIn rules, but not part of any standard rule set. Still want to explicitely exclude it at this time.
+        'PSAvoidUsingWriteHost', # ScriptingStyle. No concerns using `Write-Host` because it is used as informational output in scripts and provides additional options, like color, that Write-Output and Write-Informational do not provide.
+        'PSDSC*', # PSGallery. Do not expect desired state config scripts to be used. Specific rule names can be found with: `Get-ScriptAnalyzerRule | Where-Object { $_.RuleName -like "PSDSC*" }`
+        'PSUseShouldProcessForStateChangingFunctions', # CmdletDesign, PSGallery # Rarely actually changing state of sensitive items, so not needed at this time.
     )
 
     # CodeFormattingOTBS rules, a.k.a K&R
