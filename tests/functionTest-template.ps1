@@ -8,7 +8,7 @@
 
 Describe "Function: <commandName>" {
     BeforeAll {
-        # mock commands to remove dependencies, like: Out-File, Get-Content, Invoke-RestMethod, etc.
+        # mock commands to remove dependencies, like: Out-File, Get-Content, Invoke-RestMethod, Start-Sleep etc.
         # define paramsets
     }
 
@@ -32,6 +32,7 @@ Describe "Function: <commandName>" {
 
     Context "Execution" {
         # e.g. mocked command invoked X number of times
+        # Add Mock for Start-Sleep if using that in retry logic
     }
 
     Context "Output" {
@@ -42,8 +43,8 @@ Describe "Function: <commandName>" {
             $command.OutputType | Should -Not -BeNullOrEmpty
         }
 
-        It 'Returns the object type defined in OutputType' {
-            $commandName | Should -BeOfType $command.OutputType.Name
+        It 'Return the object type defined in OutputType' {
+            & $commandName | Should -BeOfType $command.OutputType.Name
         } -Pending # remove pending after command parameters are set properly
     }
 }
